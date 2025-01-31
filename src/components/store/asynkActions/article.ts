@@ -93,6 +93,7 @@ export const fetchDeleteArticle = (slug: string) => {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('user') || 'default')?.token}`,
         },
       })
+      // @ts-ignore
       .then((response: any) => {
         dispatch(deleteArticleAction())
       })

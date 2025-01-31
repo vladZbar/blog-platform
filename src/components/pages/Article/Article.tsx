@@ -11,13 +11,13 @@ import { Popconfirm } from 'antd'
 import { fetchDeleteArticle, fetchDeleteLike, fetchSetLike } from '../../store/asynkActions/article'
 // @ts-nocheck
 const Article = () => {
-  const articles = useSelector((state) => state.article.articles)
+  const articles = useSelector((state: any) => state.article.articles)
   const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const id = useSelector((state) => state.article.currentSlug)
-  const currentArticle = articles.slice(0, articles.length).filter((art) => art.slug === id)
+  const id = useSelector((state: any) => state.article.currentSlug)
+  const currentArticle = articles.slice(0, articles.length).filter((art: any) => art.slug === id)
   const { title, description, tagList, createdAt, author, favoritesCount, slug, body } = currentArticle[0]
   const tags =
     Array.isArray(tagList) && tagList.length > 0
@@ -34,14 +34,15 @@ const Article = () => {
   const formattedDate = format(createdAt, 'MMMM d, yyyy')
   console.log(currentArticle)
 
-  const confirm: PopconfirmProps['onConfirm'] = (e) => {
+  const confirm: PopconfirmProps['onConfirm'] = () => {
     // console.log(e)
     // message.success('Click on Yes')
+    // @ts-ignore
     dispatch(fetchDeleteArticle(slug))
     navigate('/articles')
   }
 
-  const cancel: PopconfirmProps['onCancel'] = (e) => {
+  const cancel: PopconfirmProps['onCancel'] = () => {
     // console.log(e)
     // message.error('Click on No')
   }
@@ -50,9 +51,11 @@ const Article = () => {
     if (user) {
       if (localStorage.getItem(slug) === 'true') {
         localStorage.setItem(slug, 'false')
+        // @ts-ignore
         dispatch(fetchDeleteLike(slug))
       } else {
         localStorage.setItem(slug, 'true')
+        // @ts-ignore
         dispatch(fetchSetLike(slug))
       }
     }

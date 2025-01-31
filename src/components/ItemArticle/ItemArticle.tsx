@@ -51,9 +51,11 @@ const ItemArticle = ({
     if (user) {
       if (localStorage.getItem(slug) === 'true') {
         localStorage.setItem(slug, 'false')
+        // @ts-ignore
         dispatch(fetchDeleteLike(slug))
       } else {
         localStorage.setItem(slug, 'true')
+        // @ts-ignore
         dispatch(fetchSetLike(slug))
       }
     }

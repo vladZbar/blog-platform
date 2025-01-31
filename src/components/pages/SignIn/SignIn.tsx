@@ -25,7 +25,7 @@ const SignIn = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
     console.log(data)
-
+    // @ts-ignore
     dispatch(fetchSignIn(data.email, data.password))
     dispatch(emailAction(''))
     dispatch(passwordAction(''))
@@ -33,24 +33,6 @@ const SignIn = () => {
     reset()
     navigate('/articles')
   }
-
-  // console.log(JSON.parse(localStorage.getItem('user')).username)
-  // console.log(localStorage.removeItem('user'))
-  // console.log(JSON.parse(localStorage.getItem('user'))
-
-  // const test = () => {
-  //   axios
-  //     .post('https://blog-platform.kata.academy/api/users/login', {
-  //       user: {
-  //         email: 'qsadewertq@gmail.com',
-  //         password: 'eunrodnem729ry',
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data.user)
-  //     })
-  // }
-  // test()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cl.signup_wrap}>

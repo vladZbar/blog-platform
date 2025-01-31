@@ -30,7 +30,7 @@ const SignUp = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data)
-
+    // @ts-ignore
     dispatch(fetchSignUp(data.username, data.email, data.password))
     dispatch(usernameAction(''))
     dispatch(emailAction(''))

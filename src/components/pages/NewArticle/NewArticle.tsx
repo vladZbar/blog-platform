@@ -30,7 +30,7 @@ const NewArticle = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data, tags)
-
+    // @ts-ignore
     dispatch(fetchCreateArticle(data.title, data.desc, data.text, tags))
 
     reset()
@@ -42,7 +42,7 @@ const NewArticle = () => {
     }
   }, [])
 
-  const tagHandler = (e) => {
+  const tagHandler = (e: any) => {
     dispatch(changeCurrentTagAction(e.target.value))
   }
 

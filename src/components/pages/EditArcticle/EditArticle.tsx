@@ -31,7 +31,7 @@ const EditArticle = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data, tags)
-
+    // @ts-ignore
     dispatch(fetchUpdateArticle(data.title, data.desc, data.text, tags, slug))
 
     reset()

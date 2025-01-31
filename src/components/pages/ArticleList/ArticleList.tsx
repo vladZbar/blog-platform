@@ -17,6 +17,7 @@ const ArticleList = () => {
   const loading = useSelector((state: any) => state.article.loading)
 
   useEffect(() => {
+    // @ts-ignore
     dispatch(fetchArticles())
   }, [])
 
@@ -26,6 +27,7 @@ const ArticleList = () => {
     dispatch(setPageAction(page))
 
     let offset = page > 1 ? page * 10 - 10 : 0
+    // @ts-ignore
     dispatch(fetchArticles(offset))
   }
 

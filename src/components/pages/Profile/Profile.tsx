@@ -26,7 +26,7 @@ const Profile = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data)
-
+    // @ts-ignore
     dispatch(fetchUpdateUser(data.email, data.username, data.bio, data.img, data.password))
     dispatch(usernameAction(''))
     dispatch(emailAction(''))
