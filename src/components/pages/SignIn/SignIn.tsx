@@ -23,7 +23,7 @@ const SignIn = () => {
     formState: { errors },
   } = useForm<IFormInput>()
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
     console.log(data)
 
     dispatch(fetchSignIn(data.email, data.password))

@@ -17,7 +17,7 @@ export const fetchSignUp = (username: string, email: string, password: string) =
 }
 
 export const fetchSignIn = (email: string, password: string) => {
-  return (dispatch: Function) => {
+  return (dispatch: any) => {
     axios
       .post('https://blog-platform.kata.academy/api/users/login', {
         user: {

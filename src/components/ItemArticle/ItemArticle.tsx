@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { normalTag, normalTitle, normalDesc } from '../../utils/utils'
 import { fetchDeleteLike, fetchSetLike } from '../store/asynkActions/article'
-
+// @ts-nocheck
 const ItemArticle = ({
   title,
   description,

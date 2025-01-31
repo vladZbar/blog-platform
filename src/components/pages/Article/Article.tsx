@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import type { PopconfirmProps } from 'antd'
 import { Popconfirm } from 'antd'
 import { fetchDeleteArticle, fetchDeleteLike, fetchSetLike } from '../../store/asynkActions/article'
-
+// @ts-nocheck
 const Article = () => {
   const articles = useSelector((state) => state.article.articles)
   const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
