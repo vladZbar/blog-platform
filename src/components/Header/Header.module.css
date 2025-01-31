@@ -1,0 +1,85 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.logo_title {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.header {
+  font-weight: normal;
+  height: 80px;
+  background: #fff;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 26px;
+}
+
+.header__btn {
+  font-size: 18px;
+  line-height: 28px;
+  background: #fff;
+  height: 51px;
+  width: 109px;
+  transition: 0.5s;
+  border: none;
+  cursor: pointer;
+}
+
+.header__btn:hover {
+  transform: scale(0.95);
+}
+
+.header__btn__green {
+  border: 1px solid #52c41a;
+  border-radius: 5px;
+  color: #52c41a;
+}
+
+.users_wrap {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+.logout_btn {
+  border: 1px solid #000000bf;
+  border-radius: 5px;
+  color: #000000bf;
+}
+
+.img_wrap {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.create_article_btn {
+  font-size: 14px;
+  line-height: 22px;
+  background: #fff;
+  border: 1px solid #52c41a;
+  border-radius: 5px;
+  color: #52c41a;
+  padding: 0 10px;
+  height: 30px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.create_article_btn:hover {
+  transform: scale(0.95);
+}
+
+.img_wrap:hover {
+  transform: scale(0.95);
+}

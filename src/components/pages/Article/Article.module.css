@@ -1,0 +1,36 @@
+.container {
+  width: 938px;
+  margin: 0 auto;
+}
+
+.btn_wrap {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+}
+
+.delete_btn,
+.edit_btn {
+  height: 31px;
+  background: #fff;
+  border: 1px solid black;
+  padding: 6px 17px;
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.delete_btn:hover,
+.edit_btn:hover {
+  transform: scale(0.95);
+}
+
+.delete_btn {
+  border: 1px solid #f5222d;
+  color: #f5222d;
+}
+
+.edit_btn {
+  border: 1px solid #52c41a;
+  color: #52c41a;
+}

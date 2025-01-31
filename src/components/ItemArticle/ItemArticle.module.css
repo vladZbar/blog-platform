@@ -1,0 +1,112 @@
+.item {
+  min-height: 140px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px 0 #00000026;
+  background: #fff;
+  padding: 15px 15px 24px;
+  display: flex;
+  justify-content: space-between;
+  /* cursor: pointer; */
+}
+
+.content_wrap {
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+}
+
+.title_wrap {
+  display: flex;
+  gap: 13px;
+}
+
+.title {
+  color: #1890ff;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+  margin: 0;
+}
+
+.like_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 0;
+}
+
+.like {
+  border: none;
+  background: url(../../assets/like.svg) no-repeat center center;
+  width: 16px;
+  height: 14px;
+  cursor: pointer;
+  transition: 0.5s;
+  padding: 0;
+  margin: 0;
+}
+
+.liked {
+  border: none;
+  background: url(../../assets/path4.svg) no-repeat center center;
+  width: 16px;
+  height: 14px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.tags_wrap {
+  display: flex;
+  gap: 10px;
+}
+
+.tag {
+  border: 1px solid #000;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 14.5px;
+  padding: 3px 5px;
+  background: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.tag:hover {
+  transform: scale(0.95);
+}
+
+.content_text {
+  font-size: 12px;
+  line-height: 22px;
+  width: 682px;
+}
+
+.avatar_wrap {
+  display: flex;
+  gap: 12px;
+}
+
+.avatat_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.text_name {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.text_date {
+  font-size: 12px;
+  line-height: 22px;
+  color: #00000080;
+}
+
+.img {
+  border-radius: 50%;
+}

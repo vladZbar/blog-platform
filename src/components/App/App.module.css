@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../fonts/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background: #ebeef3;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+.wrap {
+  min-height: 977px;
+}
