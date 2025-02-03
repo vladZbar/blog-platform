@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { emailAction, passwordAction } from '../../store/usersReducer'
 import { fetchSignIn } from '../../store/asynkActions/users'
-import { useEffect } from 'react'
 
 interface IFormInput {
   email: string

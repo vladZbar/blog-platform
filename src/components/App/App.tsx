@@ -12,7 +12,6 @@ import NewArticle from '../pages/NewArticle/NewArticle'
 import EditArticle from '../pages/EditArcticle/EditArticle'
 
 const App = () => {
-  const path = localStorage.getItem('user') ? '/new-article' : '/articles'
   return (
     <div className={cl.wrap}>
       <Router>

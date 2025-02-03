@@ -14,7 +14,6 @@ interface IFormInput {
 }
 
 const NewArticle = () => {
-  const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(() => {
