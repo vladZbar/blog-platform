@@ -32,7 +32,7 @@ const ArticleList = () => {
   }
 
   const elements = articles.map((el: any) => {
-    const { title, description, tagList, slug, createdAt, author, favoritesCount } = el
+    const { title, description, tagList, slug, createdAt, author, favoritesCount, body } = el
 
     return (
       <ItemArticle
@@ -42,8 +42,10 @@ const ArticleList = () => {
         tagList={tagList}
         createdAt={createdAt}
         author={author}
-        likes={favoritesCount}
+        favoritesCount={favoritesCount}
         slug={slug}
+        // @ts-ignore
+        body={body}
       />
     )
   })

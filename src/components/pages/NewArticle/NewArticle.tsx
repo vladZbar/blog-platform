@@ -14,10 +14,13 @@ interface IFormInput {
 }
 
 const NewArticle = () => {
+  const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  useEffect(() => {
+    !localStorage.getItem('user') ? navigate('/sign-in') : false
+  }, [])
 
-  const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
   const currentTag = useSelector((state: any) => state.article.currentTag)
   const tags = useSelector((state: any) => state.article.tags)
 
@@ -35,12 +38,6 @@ const NewArticle = () => {
 
     reset()
   }
-
-  useEffect(() => {
-    if (!user) {
-      navigate('/sign-in')
-    }
-  }, [])
 
   const tagHandler = (e: any) => {
     dispatch(changeCurrentTagAction(e.target.value))
@@ -151,7 +148,7 @@ const NewArticle = () => {
       </div>
 
       <div className={cl.create_wrap}>
-        <button type="submit" className={cl.create_btn}>
+        <button onClick={() => navigate('/articles')} type="submit" className={cl.create_btn}>
           Send
         </button>
       </div>

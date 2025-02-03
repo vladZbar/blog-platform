@@ -7,6 +7,8 @@ body {
 .logo_title {
   font-size: inherit;
   font-weight: inherit;
+  text-decoration: none;
+  color: black;
 }
 
 .header {

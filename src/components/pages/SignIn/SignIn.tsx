@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { emailAction, passwordAction } from '../../store/usersReducer'
 import { fetchSignIn } from '../../store/asynkActions/users'
+import { useEffect } from 'react'
 
 interface IFormInput {
   email: string
@@ -14,6 +15,7 @@ const SignIn = () => {
   const dispatch = useDispatch()
   const email = useSelector((state: any) => state.users.email)
   const password = useSelector((state: any) => state.users.password)
+  const err = useSelector((state: any) => state.users.err)
   const navigate = useNavigate()
 
   const {
@@ -31,7 +33,10 @@ const SignIn = () => {
     dispatch(passwordAction(''))
 
     reset()
-    navigate('/articles')
+    localStorage.getItem('user') ? navigate('/articles') : false
+    if (typeof err === 'object') {
+      navigate('/articles')
+    }
   }
 
   return (
@@ -56,6 +61,7 @@ const SignIn = () => {
             autoComplete="email"
           />
           {errors.email && <p className={cl.error_text}>{errors.email.message}</p>}
+          {err && <p className={cl.error_text}>Email on password invalid</p>}
         </div>
 
         <div className={cl.oneinput_wrap}>

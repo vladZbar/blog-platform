@@ -21,6 +21,10 @@ const EditArticle = () => {
   const currentTag = useSelector((state: any) => state.article.currentTag)
   const tags = useSelector((state: any) => state.article.tags)
   const slug = useSelector((state: any) => state.article.currentSlug)
+  // @ts-ignore
+  const currentArticle = JSON.parse(localStorage.getItem('Current-article'))
+  console.log(currentArticle);
+  
 
   const {
     register,
@@ -97,6 +101,7 @@ const EditArticle = () => {
             placeholder="Title"
             style={{ border: errors.title ? '1px solid #F5222D' : '1px solid #D9D9D9' }}
             autoComplete="email"
+            defaultValue={currentArticle?.title}
           />
           {errors.title && <p className={cl.error_text}>{errors.title.message}</p>}
         </div>
@@ -111,6 +116,7 @@ const EditArticle = () => {
             type="text"
             placeholder="Short description"
             style={{ border: errors.desc ? '1px solid #F5222D' : '1px solid #D9D9D9' }}
+            defaultValue={currentArticle?.description}
           />
           {errors.desc && <p className={cl.error_text}>{errors.desc.message}</p>}
         </div>
@@ -124,6 +130,7 @@ const EditArticle = () => {
             className={`${cl.inp} ${cl.inp_text}`}
             placeholder="Text"
             style={{ border: errors.text ? '1px solid #F5222D' : '1px solid #D9D9D9' }}
+            defaultValue={currentArticle?.body}
           />
           {errors.text && <p className={cl.error_text}>{errors.text.message}</p>}
         </div>
@@ -152,7 +159,7 @@ const EditArticle = () => {
       </div>
 
       <div className={cl.create_wrap}>
-        <button type="submit" className={cl.create_btn}>
+        <button onClick={() => navigate('/articles')} type="submit" className={cl.create_btn}>
           Send
         </button>
       </div>

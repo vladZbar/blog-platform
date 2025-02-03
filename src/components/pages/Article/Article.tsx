@@ -18,7 +18,10 @@ const Article = () => {
 
   const id = useSelector((state: any) => state.article.currentSlug)
   const currentArticle = articles.slice(0, articles.length).filter((art: any) => art.slug === id)
-  const { title, description, tagList, createdAt, author, favoritesCount, slug, body } = currentArticle[0]
+
+  const { title, description, tagList, createdAt, author, favoritesCount, slug, body } =
+    // @ts-ignore
+    currentArticle[0] || JSON.parse(localStorage.getItem('Current-article'))
   const tags =
     Array.isArray(tagList) && tagList.length > 0
       ? tagList.map((tag) => {
@@ -30,6 +33,7 @@ const Article = () => {
           )
         })
       : ''
+  console.log(author)
 
   const formattedDate = format(createdAt, 'MMMM d, yyyy')
   console.log(currentArticle)
@@ -81,7 +85,10 @@ const Article = () => {
               <div className={cl.avatat_text}>
                 <span className={cl.text_name}>{author.username}</span>
                 <span className={cl.text_date}>{formattedDate}</span>
-                {user && (
+
+                {!user ? false : user.username === author.username ||
+                // @ts-ignore
+                JSON.parse(localStorage.getItem('user')).username === author.username ? (
                   <div className={classes.btn_wrap}>
                     <Popconfirm
                       title="Delete the task"
@@ -99,6 +106,8 @@ const Article = () => {
                       Edit
                     </button>
                   </div>
+                ) : (
+                  false
                 )}
               </div>
               <img className={cl.img} src={author.image} alt="avatar" width={46} height={46} />

@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { signUpUserAction, signInUserAction, updateUserAction } from '../usersReducer'
+import { signUpUserAction, signInUserAction, updateUserAction, errSignUpAction } from '../usersReducer'
+
 
 export const fetchSignUp = (username: string, email: string, password: string) => {
   return (dispatch: Function) => {
@@ -11,8 +12,13 @@ export const fetchSignUp = (username: string, email: string, password: string) =
           password: password,
         },
       })
-      .then((response) => dispatch(signUpUserAction(response.data.user.token)))
-      .catch((err) => console.log(err.name, 'ошибка при регистрации'))
+      .then((response) => {
+        dispatch(signUpUserAction(response.data.user.token))
+      })
+      .catch((err) => {
+        dispatch(errSignUpAction(err.response.data.errors))
+        console.log(err.response.data.errors, 'ошибка при регистрации')
+      })
   }
 }
 
@@ -31,7 +37,10 @@ export const fetchSignIn = (email: string, password: string) => {
         localStorage.setItem('user', JSON.stringify(response.data.user))
         dispatch(signInUserAction(response.data.user))
       })
-      .catch((err) => console.log(err.name, 'ошибка при авторизации'))
+      .catch((err) => {
+        console.log(err.response.data.errors, 'ошибка при авторизации')
+        dispatch(errSignUpAction(err.response.data.errors))
+      })
   }
 }
 

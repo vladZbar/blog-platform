@@ -15,21 +15,36 @@ const ItemArticle = ({
   tagList,
   createdAt,
   author,
-  likes,
+  favoritesCount,
   slug,
+  // @ts-ignore
+  body,
 }: {
   title: any
   description: any
   tagList: any
   createdAt: any
   author: any
-  likes: any
+  favoritesCount: any
   slug: any
+  bode: any
 }) => {
   const dispatch = useDispatch()
   const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
+  
 
   const formattedDate = format(createdAt, 'MMMM d, yyyy')
+
+  const cur = {
+    title: title,
+    description: description,
+    tagList: tagList,
+    createdAt: createdAt,
+    author: author,
+    favoritesCount: favoritesCount,
+    slug: slug,
+    body: body,
+  }
 
   const tags =
     Array.isArray(tagList) && tagList.length > 0
@@ -66,7 +81,12 @@ const ItemArticle = ({
       <div className={cl.content_wrap}>
         <div className={cl.title_wrap}>
           {/* <h2 className={cl.title}></h2> */}
-          <Link className={cl.title} to={`/articles/${slug}`}>
+          <Link
+            // @ts-ignore
+            onClick={() => localStorage.setItem(`Current-article`, JSON.stringify(cur))}
+            className={cl.title}
+            to={`/articles/${slug}`}
+          >
             {normalTitle(title)}
           </Link>
 
@@ -75,7 +95,7 @@ const ItemArticle = ({
               onClick={handleLike}
               className={localStorage.getItem(slug) === 'true' && user ? cl.liked : cl.like}
             ></button>
-            <span>{likes}</span>
+            <span>{favoritesCount}</span>
           </div>
         </div>
 

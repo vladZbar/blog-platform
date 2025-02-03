@@ -19,6 +19,7 @@ const SignUp = () => {
   const username = useSelector((state: any) => state.users.username)
   const email = useSelector((state: any) => state.users.email)
   const password = useSelector((state: any) => state.users.password)
+  const err = useSelector((state: any) => state.users.err)
 
   const {
     register,
@@ -59,6 +60,7 @@ const SignUp = () => {
           />
 
           {errors.username && <p className={cl.error_text}>{errors.username.message}</p>}
+          {err.username && <p className={cl.error_text}>Username {err.username}</p>}
         </div>
 
         <div className={cl.oneinput_wrap}>
@@ -79,6 +81,7 @@ const SignUp = () => {
             style={{ border: errors.email ? '1px solid #F5222D' : '1px solid #D9D9D9' }}
           />
           {errors.email && <p className={cl.error_text}>{errors.email.message}</p>}
+          {err.email && <p className={cl.error_text}>Email {err.username}</p>}
         </div>
 
         <div className={cl.oneinput_wrap}>

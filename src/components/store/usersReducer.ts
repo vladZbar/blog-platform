@@ -7,15 +7,18 @@ const initialState = {
   image: '',
   auth: false,
   currentUser: null,
+  err: false,
 }
 
 const SING_UP_USER = 'SING_UP_USER'
+const ERR_SIGN_UP = 'ERR_SIGN_UP'
 const SIGN_IN_USER = 'SIGN_IN_USER'
 const LOG_OUT = 'LOG_OUT'
 const USERNAME = 'USERNAME'
 const EMAIL = 'EMAIL'
 const PASSWORD = 'PASSWORD'
 const UPDATE_USER = 'UPDATE_USER'
+const ERR_SIGN_IN = 'ERR_SIGN_IP'
 
 export const usersReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -23,6 +26,11 @@ export const usersReducer = (state = initialState, action: any) => {
       return {
         ...state,
         token: action.payload,
+      }
+    case ERR_SIGN_UP:
+      return {
+        ...state,
+        err: action.payload,
       }
     case SIGN_IN_USER:
       return {
@@ -32,6 +40,11 @@ export const usersReducer = (state = initialState, action: any) => {
         username: action.payload.username,
         auth: true,
         currentUser: action.payload,
+      }
+    case ERR_SIGN_IN:
+      return {
+        ...state,
+        err: action.payload,
       }
     case UPDATE_USER:
       return {
@@ -72,3 +85,4 @@ export const updateUserAction = () => ({ type: UPDATE_USER })
 export const usernameAction = (payload: string) => ({ type: USERNAME, payload })
 export const emailAction = (payload: string) => ({ type: EMAIL, payload })
 export const passwordAction = (payload: string) => ({ type: PASSWORD, payload })
+export const errSignUpAction = (payload: any) => ({ type: ERR_SIGN_UP, payload })

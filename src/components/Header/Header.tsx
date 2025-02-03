@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import cl from './Header.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import img from '../../assets/Rectangle 1.png'
@@ -25,20 +25,12 @@ const Header = () => {
   const toNewArticle = () => {
     navigate('/new-article')
   }
-  // console.log(JSON.parse(localStorage.getItem('user')).username)
-  // console.log(localStorage.removeItem('user'))
-  // console.log(JSON.parse(localStorage.getItem('user')))
-  // console.log(localStorage.getItem('user'))
-  // onClick={() => localStorage.removeItem('user')}
 
   const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
-  // const image = JSON.parse(localStorage.getItem('user')).image || img
-  // const user = localStorage.getItem('user')
-  console.log(user)
 
   return (
     <header className={cl.header}>
-      <h1 className={cl.logo_title}>Realworld Blog</h1>
+      <Link to={'/articles'} className={cl.logo_title}>Realworld Blog</Link>
       <div>
         {!user ? (
           <>

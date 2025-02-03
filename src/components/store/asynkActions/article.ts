@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 import {
   createAticleAction,
   deleteArticleAction,
@@ -80,6 +79,7 @@ export const fetchUpdateArticle = (
       .then((response) => {
         console.log(response.data)
         dispatch(updateAticleAction())
+        localStorage.setItem('Current-article', JSON.stringify(response.data.article))
       })
       .catch((err) => console.log(err.name, 'ошибка при обновлении статьи'))
   }
@@ -116,6 +116,7 @@ export const fetchSetLike = (slug: string) => {
       .then((response) => {
         console.log(response.data.article)
         dispatch(setLikeAction(response.data.article))
+        localStorage.setItem('Current-article', JSON.stringify(response.data.article))
       })
       .catch((err) => console.log(err.name, 'ошибка при лайке'))
   }
