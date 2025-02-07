@@ -26,12 +26,13 @@ const Header = () => {
   }
 
   const toNewArticle = () => {
+    // localStorage.setItem('user', 'sdf')
     navigate('/new-article')
   }
 
   const toArticle = () => {
     dispatch(setPageAction(page))
-    
+
     let offset = page > 1 ? page * 10 - 10 : 0
     // @ts-ignore
     dispatch(fetchArticles(offset))

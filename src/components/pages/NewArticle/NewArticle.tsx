@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import cl from './NewArticle.module.css'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { addTagAction, changeCurrentTagAction, deleteTagAction } from '../../store/articleReducer'
+import { addCreateTagAction, changeCurrentTagAction, deleteTagAction } from '../../store/articleReducer'
 import { v4 as uuidv4 } from 'uuid'
 import { fetchCreateArticle } from '../../store/asynkActions/article'
 
@@ -21,7 +21,7 @@ const NewArticle = () => {
   }, [])
 
   const currentTag = useSelector((state: any) => state.article.currentTag)
-  const tags = useSelector((state: any) => state.article.tags)
+  const tags = useSelector((state: any) => state.article.createTags)
 
   const {
     register,
@@ -46,7 +46,7 @@ const NewArticle = () => {
     if (tags.includes(currentTag)) {
       console.log('такой тег уже есть')
     } else {
-      dispatch(addTagAction(currentTag))
+      dispatch(addCreateTagAction(currentTag))
     }
   }
 
@@ -70,9 +70,9 @@ const NewArticle = () => {
           placeholder="Tag"
           style={{ color: '#000' }}
         />
-        <div onClick={() => deleteTag(tag)} className={cl.btn_delete}>
+        <button onClick={() => deleteTag(tag)} className={cl.btn_delete}>
           Delete
-        </div>
+        </button>
       </div>
     )
   })
@@ -136,12 +136,12 @@ const NewArticle = () => {
               type="text"
               placeholder="Tag"
             />
-            <div onClick={clearText} className={cl.btn_delete}>
+            <button onClick={clearText} className={cl.btn_delete}>
               Delete
-            </div>
-            <div onClick={addTag} className={cl.btn_add}>
+            </button>
+            <button onClick={addTag} className={cl.btn_add}>
               Add tag
-            </div>
+            </button>
           </div>
         </div>
       </div>

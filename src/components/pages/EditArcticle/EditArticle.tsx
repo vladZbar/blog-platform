@@ -79,9 +79,9 @@ const EditArticle = () => {
           placeholder="Tag"
           style={{ color: '#000' }}
         />
-        <div onClick={() => deleteTag(tag)} className={cl.btn_delete}>
+        <button onClick={() => deleteTag(tag)} className={cl.btn_delete}>
           Delete
-        </div>
+        </button>
       </div>
     )
   })
@@ -148,12 +148,12 @@ const EditArticle = () => {
               type="text"
               placeholder="Tag"
             />
-            <div onClick={clearText} className={cl.btn_delete}>
+            <button onClick={clearText} className={cl.btn_delete}>
               Delete
-            </div>
-            <div onClick={addTag} className={cl.btn_add}>
+            </button>
+            <button onClick={addTag} className={cl.btn_add}>
               Add tag
-            </div>
+            </button>
           </div>
         </div>
       </div>

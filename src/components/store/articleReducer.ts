@@ -6,6 +6,7 @@ interface ArticlesState {
   tags: any
   currentTag: string
   loading: boolean
+  createTags: any[]
 }
 
 const initialState: ArticlesState = {
@@ -14,7 +15,8 @@ const initialState: ArticlesState = {
   page: 1,
   currentSlug: '',
   // @ts-ignore
-  tags: JSON.parse(localStorage.getItem('Current-article')).tagList || [],
+  tags: JSON.parse(localStorage.getItem('Current-article'))?.tagList || [],
+  createTags: [],
   currentTag: '',
   loading: true,
 }
@@ -24,6 +26,7 @@ const SET_PAGE = 'SET_PAGE'
 const SET_SLUG = 'SET_SLUG'
 
 const ADD_TAG = 'ADD_TAG'
+const ADD_CREATE_TAG = 'ADD_CREATE_TAG'
 const DELETE_TAG = 'DELETE_TAG'
 const CHANGE_CURRENT_TAG = 'CHANGE_CURRENT_TAG'
 
@@ -52,11 +55,20 @@ export const articleReducer = (state = initialState, action: any): ArticlesState
       return {
         ...state,
         currentSlug: action.payload,
+        // @ts-ignore
+        tags: JSON.parse(localStorage.getItem('Current-article'))?.tagList || []
+        
       }
     case ADD_TAG:
       return {
         ...state,
         tags: [...state.tags, action.payload],
+        currentTag: '',
+      }
+    case ADD_CREATE_TAG:
+      return {
+        ...state,
+        createTags: [...state.createTags, action.payload],
         currentTag: '',
       }
     case CHANGE_CURRENT_TAG:
@@ -106,6 +118,7 @@ export const getArticlesAction = (payload: any[]) => ({ type: GET_ARTICLES, payl
 export const setPageAction = (payload: number) => ({ type: SET_PAGE, payload })
 export const setSlugAction = (payload: number) => ({ type: SET_SLUG, payload })
 export const addTagAction = (payload: string) => ({ type: ADD_TAG, payload })
+export const addCreateTagAction = (payload: string) => ({ type: ADD_CREATE_TAG, payload })
 export const changeCurrentTagAction = (payload: string) => ({ type: CHANGE_CURRENT_TAG, payload })
 export const deleteTagAction = (payload: string) => ({ type: DELETE_TAG, payload })
 export const createAticleAction = () => ({ type: CREATE_ARTICLE })

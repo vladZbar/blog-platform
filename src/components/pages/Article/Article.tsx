@@ -102,7 +102,10 @@ const Article = () => {
                       <button className={classes.delete_btn}>Delete</button>
                     </Popconfirm>
 
-                    <button onClick={() => navigate(`/articles/${slug}/edit`)} className={classes.edit_btn}>
+                    <button onClick={() => {
+                      // localStorage.setItem('Current-article')
+                      navigate(`/articles/${slug}/edit`)
+                      }} className={classes.edit_btn}>
                       Edit
                     </button>
                   </div>
