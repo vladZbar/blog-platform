@@ -2,7 +2,7 @@ import cl from './SignIn.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { emailAction, InEmailAction, passwordAction } from '../../store/usersReducer'
+import { InEmailAction, passwordAction } from '../../store/usersReducer'
 import { fetchSignIn } from '../../store/asynkActions/users'
 
 interface IFormInput {

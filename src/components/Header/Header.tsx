@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import cl from './Header.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import img from '../../assets/Rectangle 1.png'
