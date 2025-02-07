@@ -19,7 +19,7 @@ const SignUp = () => {
   const username = useSelector((state: any) => state.users.username)
   const email = useSelector((state: any) => state.users.email)
   const password = useSelector((state: any) => state.users.password)
-  const err = useSelector((state: any) => state.users.err)
+  const err = useSelector((state: any) => state.users.errSignUp)
 
   const {
     register,

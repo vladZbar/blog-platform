@@ -2,12 +2,14 @@ const initialState = {
   token: '',
   username: '',
   email: '',
+  inEmail: '',
   password: '',
   bio: '',
   image: '',
   auth: false,
   currentUser: null,
-  err: false,
+  errSignIn: false,
+  errSignUp: false,
 }
 
 const SING_UP_USER = 'SING_UP_USER'
@@ -16,6 +18,7 @@ const SIGN_IN_USER = 'SIGN_IN_USER'
 const LOG_OUT = 'LOG_OUT'
 const USERNAME = 'USERNAME'
 const EMAIL = 'EMAIL'
+const SIGN_IN_EMAIL = 'SIGN_IN_EMAIL'
 const PASSWORD = 'PASSWORD'
 const UPDATE_USER = 'UPDATE_USER'
 const ERR_SIGN_IN = 'ERR_SIGN_IP'
@@ -30,12 +33,12 @@ export const usersReducer = (state = initialState, action: any) => {
     case ERR_SIGN_UP:
       return {
         ...state,
-        err: action.payload,
+        errSignUp: action.payload,
       }
     case SIGN_IN_USER:
       return {
         ...state,
-        email: action.payload.email,
+        inEmail: action.payload.email,
         token: action.payload.token,
         username: action.payload.username,
         auth: true,
@@ -44,7 +47,7 @@ export const usersReducer = (state = initialState, action: any) => {
     case ERR_SIGN_IN:
       return {
         ...state,
-        err: action.payload,
+        errSignIn: action.payload,
       }
     case UPDATE_USER:
       return {
@@ -67,6 +70,11 @@ export const usersReducer = (state = initialState, action: any) => {
         ...state,
         email: action.payload,
       }
+    case SIGN_IN_EMAIL:
+      return {
+        ...state,
+        email: action.payload,
+      }
     case PASSWORD:
       return {
         ...state,
@@ -84,5 +92,7 @@ export const logOutAction = () => ({ type: LOG_OUT })
 export const updateUserAction = () => ({ type: UPDATE_USER })
 export const usernameAction = (payload: string) => ({ type: USERNAME, payload })
 export const emailAction = (payload: string) => ({ type: EMAIL, payload })
+export const InEmailAction = (payload: string) => ({ type: EMAIL, payload })
 export const passwordAction = (payload: string) => ({ type: PASSWORD, payload })
 export const errSignUpAction = (payload: any) => ({ type: ERR_SIGN_UP, payload })
+export const errSignInAction = (payload: any) => ({ type: ERR_SIGN_IN, payload })

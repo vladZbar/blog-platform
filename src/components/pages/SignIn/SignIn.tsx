@@ -2,7 +2,7 @@ import cl from './SignIn.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { emailAction, passwordAction } from '../../store/usersReducer'
+import { emailAction, InEmailAction, passwordAction } from '../../store/usersReducer'
 import { fetchSignIn } from '../../store/asynkActions/users'
 
 interface IFormInput {
@@ -12,9 +12,9 @@ interface IFormInput {
 
 const SignIn = () => {
   const dispatch = useDispatch()
-  const email = useSelector((state: any) => state.users.email)
+  const email = useSelector((state: any) => state.users.inEmail)
   const password = useSelector((state: any) => state.users.password)
-  const err = useSelector((state: any) => state.users.err)
+  const err = useSelector((state: any) => state.users.errSignIn)
   const navigate = useNavigate()
 
   const {
@@ -28,12 +28,12 @@ const SignIn = () => {
     console.log(data)
     // @ts-ignore
     dispatch(fetchSignIn(data.email, data.password))
-    dispatch(emailAction(''))
+    dispatch(InEmailAction(''))
     dispatch(passwordAction(''))
 
     reset()
     localStorage.getItem('user') ? navigate('/articles') : false
-    if (typeof err === 'object') {
+    if (typeof err !== 'object') {
       navigate('/articles')
     }
   }

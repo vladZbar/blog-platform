@@ -9,7 +9,16 @@ body {
   font-weight: inherit;
   text-decoration: none;
   color: black;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.5s;
 }
+
+.logo_title:hover {
+  transform: scale(0.95);
+}
+
 
 .header {
   font-weight: normal;

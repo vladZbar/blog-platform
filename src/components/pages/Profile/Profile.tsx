@@ -92,7 +92,6 @@ const Profile = () => {
           <span className={cl.inp_title}>New password</span>
           <input
             {...register('password', {
-              required: 'password is required',
               minLength: { value: 6, message: 'Your password needs to be at least 6 characters.' },
               maxLength: { value: 40, message: 'Your password needs to be at not more 40 characters.' },
             })}

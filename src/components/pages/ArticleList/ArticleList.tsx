@@ -16,10 +16,10 @@ const ArticleList = () => {
   const page = useSelector((state: any) => state.article.page)
   const loading = useSelector((state: any) => state.article.loading)
 
-  useEffect(() => {
-    // @ts-ignore
-    dispatch(fetchArticles())
-  }, [])
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   dispatch(fetchArticles())
+  // }, [])
 
   console.log(articles)
 

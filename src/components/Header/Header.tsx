@@ -3,10 +3,13 @@ import cl from './Header.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import img from '../../assets/Rectangle 1.png'
 import { logOutAction } from '../store/usersReducer'
+import { setPageAction } from '../store/articleReducer'
+import { fetchArticles } from '../store/asynkActions/article'
 
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const page = useSelector((state: any) => state.article.page)
 
   const toSignIn = () => {
     navigate('/sign-in')
@@ -26,11 +29,22 @@ const Header = () => {
     navigate('/new-article')
   }
 
+  const toArticle = () => {
+    dispatch(setPageAction(page))
+    
+    let offset = page > 1 ? page * 10 - 10 : 0
+    // @ts-ignore
+    dispatch(fetchArticles(offset))
+    navigate('/articles/')
+  }
+
   const user = useSelector((state: any) => state.users.currentUser) || localStorage.getItem('user')
 
   return (
     <header className={cl.header}>
-      <Link to={'/articles'} className={cl.logo_title}>Realworld Blog</Link>
+      <button onClick={toArticle} className={cl.logo_title}>
+        Realworld Blog
+      </button>
       <div>
         {!user ? (
           <>

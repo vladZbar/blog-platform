@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { signUpUserAction, signInUserAction, updateUserAction, errSignUpAction } from '../usersReducer'
+import { signUpUserAction, signInUserAction, updateUserAction, errSignUpAction, errSignInAction } from '../usersReducer'
 
 
 export const fetchSignUp = (username: string, email: string, password: string) => {
@@ -39,7 +39,7 @@ export const fetchSignIn = (email: string, password: string) => {
       })
       .catch((err) => {
         console.log(err.response.data.errors, 'ошибка при авторизации')
-        dispatch(errSignUpAction(err.response.data.errors))
+        dispatch(errSignInAction(err.response.data.errors))
       })
   }
 }

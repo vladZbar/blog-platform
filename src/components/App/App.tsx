@@ -10,8 +10,16 @@ import SignUp from '../pages/SignUp/SignUp'
 import Profile from '../pages/Profile/Profile'
 import NewArticle from '../pages/NewArticle/NewArticle'
 import EditArticle from '../pages/EditArcticle/EditArticle'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchArticles } from '../store/asynkActions/article'
 
 const App = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchArticles())
+  }, [])
   return (
     <div className={cl.wrap}>
       <Router>

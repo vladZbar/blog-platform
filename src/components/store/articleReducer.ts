@@ -13,7 +13,8 @@ const initialState: ArticlesState = {
   totalPage: 0,
   page: 1,
   currentSlug: '',
-  tags: [],
+  // @ts-ignore
+  tags: JSON.parse(localStorage.getItem('Current-article')).tagList || [],
   currentTag: '',
   loading: true,
 }
